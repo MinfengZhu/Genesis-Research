@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Mathematics Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1 class="logo">Genesis Research</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">Advancing Mathematics Through Artificial Intelligence</h2>
+                    <p class="hero-description">
+                        Pioneering research at the intersection of AI and mathematical reasoning, 
+                        developing intelligent systems that can discover, prove, and explore mathematical concepts.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#research" class="btn btn-primary">Explore Research</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="mathematical-animation">
+                        <div class="geometry-container">
+                            <svg viewBox="0 0 600 400" class="geometry-svg">
+                                <!-- Sierpinski Triangle -->
+                                <g class="geometric-shape sierpinski-group" transform-origin="120 150">
+                                    <polygon points="120,50 80,130 160,130" class="shape sierpinski-outer" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                                    <polygon points="120,90 100,110 140,110" class="shape sierpinski-inner1" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+                                    <polygon points="100,110 90,120 110,120" class="shape sierpinski-inner2" fill="none" stroke="#3b82f6" stroke-width="1"/>
+                                    <polygon points="140,110 130,120 150,120" class="shape sierpinski-inner3" fill="none" stroke="#3b82f6" stroke-width="1"/>
+                                    <polygon points="120,70 110,80 130,80" class="shape sierpinski-inner4" fill="none" stroke="#3b82f6" stroke-width="1"/>
+                                </g>
+                                
+                                <!-- Fibonacci Spiral -->
+                                <g class="geometric-shape fibonacci-group" transform-origin="300 200">
+                                    <path d="M 300 200 A 13 13 0 0 1 313 187 A 21 21 0 0 1 334 208 A 34 34 0 0 1 300 242 A 55 55 0 0 1 245 187 A 89 89 0 0 1 334 98" 
+                                          class="shape fibonacci-spiral" fill="none" stroke="#10b981" stroke-width="2"/>
+                                    <!-- Golden rectangles -->
+                                    <rect x="287" y="187" width="13" height="13" class="shape fib-rect1" fill="none" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+                                    <rect x="300" y="187" width="21" height="21" class="shape fib-rect2" fill="none" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+                                    <rect x="287" y="208" width="34" height="34" class="shape fib-rect3" fill="none" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+                                </g>
+                                
+                                <!-- Platonic Solids (2D projection) - Icosahedron -->
+                                <g class="geometric-shape icosahedron-group" transform-origin="480 150">
+                                    <polygon points="480,80 460,100 470,120 490,120 500,100" class="shape ico-top" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                                    <polygon points="460,100 440,130 460,150 480,140 470,120" class="shape ico-left" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                                    <polygon points="500,100 520,130 500,150 480,140 490,120" class="shape ico-right" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                                    <polygon points="470,120 480,140 490,120" class="shape ico-center" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                                    <polygon points="440,130 460,150 450,170 430,160 430,140" class="shape ico-bottom-left" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+                                    <polygon points="520,130 530,140 530,160 510,170 500,150" class="shape ico-bottom-right" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+                                </g>
+                                
+                                <!-- Mandelbrot Set Approximation -->
+                                <g class="geometric-shape mandelbrot-group" transform-origin="150 320">
+                                    <circle cx="150" cy="320" r="25" class="shape mandel-main" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                                    <circle cx="125" cy="320" r="12" class="shape mandel-bulb1" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                                    <circle cx="175" cy="320" r="8" class="shape mandel-bulb2" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                                    <circle cx="110" cy="320" r="6" class="shape mandel-bulb3" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                                    <circle cx="183" cy="320" r="4" class="shape mandel-bulb4" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                                    <path d="M 150 295 Q 160 305 150 315 Q 140 305 150 295" class="shape mandel-tendril1" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                                    <path d="M 150 325 Q 140 335 150 345 Q 160 335 150 325" class="shape mandel-tendril2" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                                </g>
+                                
+                                <!-- Koch Snowflake -->
+                                <g class="geometric-shape koch-group" transform-origin="380 320">
+                                    <path d="M 350 300 L 370 287 L 390 300 L 385 315 L 375 320 L 365 315 L 360 300 Z" 
+                                          class="shape koch-outer" fill="none" stroke="#ec4899" stroke-width="2"/>
+                                    <path d="M 360 300 L 365 295 L 370 300 L 375 295 L 380 300 L 385 295 L 390 300" 
+                                          class="shape koch-detail1" fill="none" stroke="#ec4899" stroke-width="1"/>
+                                    <path d="M 385 315 L 382 318 L 378 315 L 375 318 L 372 315 L 368 318 L 365 315" 
+                                          class="shape koch-detail2" fill="none" stroke="#ec4899" stroke-width="1"/>
+                                </g>
+                                
+                                <!-- Lorenz Attractor -->
+                                <g class="geometric-shape lorenz-group" transform-origin="450 280">
+                                    <path d="M 420 260 Q 440 250 460 260 Q 480 270 470 290 Q 460 310 440 300 Q 420 290 430 270 Q 440 250 460 260 Q 470 280 450 300 Q 430 310 420 290 Q 410 270 430 260" 
+                                          class="shape lorenz-path" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+                                    <circle cx="435" cy="275" r="2" class="vertex lorenz-point1" fill="#6366f1"/>
+                                    <circle cx="465" cy="285" r="2" class="vertex lorenz-point2" fill="#6366f1"/>
+                                </g>
+                                
+                                <!-- Sacred Geometry Connections -->
+                                <g class="connection-lines">
+                                    <path d="M 120 150 Q 210 100 300 200" class="connection-curve" stroke="#e5e7eb" stroke-width="1" opacity="0.2" fill="none"/>
+                                    <path d="M 300 200 Q 390 150 480 150" class="connection-curve" stroke="#e5e7eb" stroke-width="1" opacity="0.2" fill="none"/>
+                                    <path d="M 480 150 Q 450 235 380 320" class="connection-curve" stroke="#e5e7eb" stroke-width="1" opacity="0.2" fill="none"/>
+                                    <path d="M 380 320 Q 265 340 150 320" class="connection-curve" stroke="#e5e7eb" stroke-width="1" opacity="0.2" fill="none"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="research">
+            <div class="container">
+                <h2 class="section-title">Research Areas</h2>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="card-icon">📐</div>
+                        <h3>Geometry Reasoning</h3>
+                        <p>Developing AI systems that can understand and reason about geometric concepts, spatial relationships, and visual mathematical structures.</p>
+                    </div>
+                    <div class="research-card">
+                        <div class="card-icon">🧠</div>
+                        <h3>Neural Theorem Proving</h3>
+                        <p>Developing neural networks that can automatically discover and prove mathematical theorems using deep learning architectures.</p>
+                    </div>
+                    <div class="research-card">
+                        <div class="card-icon">📊</div>
+                        <h3>Mathematical Discovery</h3>
+                        <p>Using machine learning to identify patterns in mathematical data and generate new conjectures and insights.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Minfeng Zhu</h3>
+                        <p>Assistant Professor<br>
+                        Zhejiang University</p>
+                        
+                        <div class="contact-details">
+                            <p><strong>Email:</strong> minfeng_zhu[at]zju.edu.cn</p>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Genesis Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
