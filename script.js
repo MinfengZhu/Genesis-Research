@@ -58,20 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Dynamic neural network connections
-    createNeuralNetworkConnections();
+    // Initialize Conway's Game of Life
+    initializeGameOfLife();
 
-    // Parallax effect for floating equations
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const equations = document.querySelectorAll('.floating-equation');
-        
-        equations.forEach((equation, index) => {
-            const speed = 0.5 + (index * 0.1);
-            const yPos = -(scrolled * speed);
-            equation.style.transform = `translateY(${yPos}px)`;
-        });
-    });
+    // Remove old parallax code since we're using dragon curve now
 
     // Contact form handling
     const contactForm = document.querySelector('.contact-form');
@@ -121,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+
     // Typing animation for hero section
     typeWriterEffect();
 
@@ -128,64 +119,321 @@ document.addEventListener('DOMContentLoaded', function() {
     initMathVisualizations();
 });
 
-// Create neural network connections
-function createNeuralNetworkConnections() {
-    const svg = document.querySelector('.network-svg');
-    const connectionsGroup = svg.querySelector('.connections');
-    
-    if (!connectionsGroup) return;
-    
-    // Define node positions
-    const layers = [
-        [{x: 50, y: 75}, {x: 50, y: 125}, {x: 50, y: 175}, {x: 50, y: 225}],
-        [{x: 150, y: 60}, {x: 150, y: 100}, {x: 150, y: 140}, {x: 150, y: 180}, {x: 150, y: 220}, {x: 150, y: 260}],
-        [{x: 250, y: 75}, {x: 250, y: 125}, {x: 250, y: 175}, {x: 250, y: 225}],
-        [{x: 350, y: 125}, {x: 350, y: 175}]
-    ];
-    
-    // Create connections between layers
-    for (let i = 0; i < layers.length - 1; i++) {
-        const currentLayer = layers[i];
-        const nextLayer = layers[i + 1];
+// Conway's Game of Life Implementation
+class GameOfLife {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.cols = 75;
+        this.rows = 50;
+        this.cellSize = 8;
+        this.grid = [];
+        this.nextGrid = [];
+        this.generation = 0;
+        this.isRunning = false;
+        this.animationId = null;
         
-        currentLayer.forEach(node1 => {
-            nextLayer.forEach(node2 => {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', node1.x);
-                line.setAttribute('y1', node1.y);
-                line.setAttribute('x2', node2.x);
-                line.setAttribute('y2', node2.y);
-                line.setAttribute('stroke', '#cbd5e1');
-                line.setAttribute('stroke-width', '0.5');
-                line.setAttribute('opacity', '0.3');
-                line.classList.add('connection-line');
-                
-                connectionsGroup.appendChild(line);
-            });
+        // Colors
+        this.aliveColor = '#3b82f6';
+        this.deadColor = '#f8fafc';
+        this.gridColor = '#e2e8f0';
+        
+        this.initializeGrid();
+        this.setupEventListeners();
+        this.draw();
+    }
+    
+    initializeGrid() {
+        // Initialize both grids with dead cells
+        for (let i = 0; i < this.cols; i++) {
+            this.grid[i] = [];
+            this.nextGrid[i] = [];
+            for (let j = 0; j < this.rows; j++) {
+                this.grid[i][j] = 0;
+                this.nextGrid[i][j] = 0;
+            }
+        }
+        
+        // Randomly select and place meaningful animal-like patterns
+        this.addRandomAnimalPatterns();
+    }
+    
+    addRandomAnimalPatterns() {
+        // Available animal patterns
+        const animalPatterns = [
+            { name: 'Fish', method: this.addFish.bind(this) },
+            { name: 'Bird', method: this.addBird.bind(this) },
+            { name: 'Butterfly', method: this.addButterfly.bind(this) },
+            { name: 'Rabbit', method: this.addRabbit.bind(this) },
+            { name: 'Cat', method: this.addCat.bind(this) },
+            { name: 'Dog', method: this.addDog.bind(this) }
+        ];
+        
+        // Randomly select 3-5 different patterns
+        const numPatterns = 3 + Math.floor(Math.random() * 3);
+        const selectedPatterns = [];
+        
+        // Shuffle and select patterns
+        const shuffled = [...animalPatterns].sort(() => 0.5 - Math.random());
+        for (let i = 0; i < Math.min(numPatterns, shuffled.length); i++) {
+            selectedPatterns.push(shuffled[i]);
+        }
+        
+        // Place patterns at random positions
+        selectedPatterns.forEach(pattern => {
+            const x = 5 + Math.floor(Math.random() * (this.cols - 15));
+            const y = 5 + Math.floor(Math.random() * (this.rows - 15));
+            pattern.method(x, y);
         });
     }
     
-    // Animate connections
-    animateConnections();
+    // Animal-like patterns
+    addFish(x, y) {
+        const pattern = [
+            [0, 0, 1, 1, 0],
+            [0, 1, 0, 0, 1],
+            [1, 0, 0, 0, 0],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 1, 0],
+            [0, 1, 1, 0, 0]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addBird(x, y) {
+        const pattern = [
+            [0, 0, 1, 0, 0],
+            [0, 1, 0, 1, 0],
+            [1, 0, 0, 0, 1],
+            [0, 1, 1, 1, 0],
+            [0, 0, 1, 0, 0]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addButterfly(x, y) {
+        const pattern = [
+            [1, 0, 0, 0, 1],
+            [0, 1, 0, 1, 0],
+            [0, 0, 1, 0, 0],
+            [0, 1, 0, 1, 0],
+            [1, 0, 0, 0, 1]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addRabbit(x, y) {
+        const pattern = [
+            [0, 1, 0, 1, 0],
+            [1, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1],
+            [0, 1, 0, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 0, 1, 0, 0]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addCat(x, y) {
+        const pattern = [
+            [1, 0, 0, 0, 1],
+            [0, 1, 0, 1, 0],
+            [0, 0, 1, 0, 0],
+            [0, 1, 1, 1, 0],
+            [1, 0, 1, 0, 1],
+            [0, 0, 1, 0, 0]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addDog(x, y) {
+        const pattern = [
+            [0, 1, 1, 1, 0],
+            [1, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1],
+            [1, 0, 1, 0, 1],
+            [0, 1, 0, 1, 0],
+            [0, 0, 1, 0, 0]
+        ];
+        this.addPattern(x, y, pattern);
+    }
+    
+    addPattern(startX, startY, pattern) {
+        for (let i = 0; i < pattern.length; i++) {
+            for (let j = 0; j < pattern[i].length; j++) {
+                const x = (startX + j) % this.cols;
+                const y = (startY + i) % this.rows;
+                this.grid[x][y] = pattern[i][j];
+            }
+        }
+    }
+    
+    setupEventListeners() {
+        // Canvas click to toggle cells (optional interaction)
+        this.canvas.addEventListener('click', (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            const x = Math.floor((e.clientX - rect.left) / this.cellSize);
+            const y = Math.floor((e.clientY - rect.top) / this.cellSize);
+            
+            if (x >= 0 && x < this.cols && y >= 0 && y < this.rows) {
+                this.grid[x][y] = this.grid[x][y] ? 0 : 1;
+                this.draw();
+            }
+        });
+    }
+    
+    
+    play() {
+        this.isRunning = true;
+        this.animate();
+    }
+    
+    stop() {
+        this.isRunning = false;
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+    
+    animate() {
+        if (!this.isRunning) return;
+        
+        this.step();
+        
+        // Slow down the animation (approximately 8 fps)
+        setTimeout(() => {
+            this.animationId = requestAnimationFrame(() => this.animate());
+        }, 125);
+    }
+    
+    step() {
+        // Calculate next generation
+        for (let x = 0; x < this.cols; x++) {
+            for (let y = 0; y < this.rows; y++) {
+                const neighbors = this.countNeighbors(x, y);
+                const current = this.grid[x][y];
+                
+                // Conway's rules
+                if (current === 1) {
+                    // Live cell
+                    if (neighbors < 2 || neighbors > 3) {
+                        this.nextGrid[x][y] = 0; // Dies
+                    } else {
+                        this.nextGrid[x][y] = 1; // Survives
+                    }
+                } else {
+                    // Dead cell
+                    if (neighbors === 3) {
+                        this.nextGrid[x][y] = 1; // Birth
+                    } else {
+                        this.nextGrid[x][y] = 0; // Stays dead
+                    }
+                }
+            }
+        }
+        
+        // Swap grids
+        [this.grid, this.nextGrid] = [this.nextGrid, this.grid];
+        
+        this.generation++;
+        this.draw();
+    }
+    
+    countNeighbors(x, y) {
+        let count = 0;
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                if (i === 0 && j === 0) continue; // Skip center cell
+                
+                const neighborX = (x + i + this.cols) % this.cols;
+                const neighborY = (y + j + this.rows) % this.rows;
+                count += this.grid[neighborX][neighborY];
+            }
+        }
+        return count;
+    }
+    
+    clear() {
+        this.stop();
+        
+        for (let x = 0; x < this.cols; x++) {
+            for (let y = 0; y < this.rows; y++) {
+                this.grid[x][y] = 0;
+            }
+        }
+        this.generation = 0;
+        this.draw();
+    }
+    
+    randomize() {
+        this.stop();
+        
+        for (let x = 0; x < this.cols; x++) {
+            for (let y = 0; y < this.rows; y++) {
+                this.grid[x][y] = Math.random() < 0.3 ? 1 : 0;
+            }
+        }
+        this.generation = 0;
+        this.draw();
+    }
+    
+    draw() {
+        // Clear canvas
+        this.ctx.fillStyle = this.deadColor;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw cells
+        for (let x = 0; x < this.cols; x++) {
+            for (let y = 0; y < this.rows; y++) {
+                if (this.grid[x][y] === 1) {
+                    this.ctx.fillStyle = this.aliveColor;
+                    this.ctx.fillRect(
+                        x * this.cellSize, 
+                        y * this.cellSize, 
+                        this.cellSize - 1, 
+                        this.cellSize - 1
+                    );
+                }
+            }
+        }
+        
+        // Draw grid lines (subtle)
+        this.ctx.strokeStyle = this.gridColor;
+        this.ctx.lineWidth = 0.5;
+        
+        // Vertical lines
+        for (let x = 0; x <= this.cols; x++) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(x * this.cellSize, 0);
+            this.ctx.lineTo(x * this.cellSize, this.canvas.height);
+            this.ctx.stroke();
+        }
+        
+        // Horizontal lines
+        for (let y = 0; y <= this.rows; y++) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(0, y * this.cellSize);
+            this.ctx.lineTo(this.canvas.width, y * this.cellSize);
+            this.ctx.stroke();
+        }
+    }
 }
 
-// Animate neural network connections
-function animateConnections() {
-    const connections = document.querySelectorAll('.connection-line');
+// Initialize Conway's Game of Life
+function initializeGameOfLife() {
+    const canvas = document.getElementById('life-canvas');
+    if (!canvas) return;
     
-    setInterval(() => {
-        const randomConnection = connections[Math.floor(Math.random() * connections.length)];
-        
-        randomConnection.style.stroke = '#3b82f6';
-        randomConnection.style.strokeWidth = '2';
-        randomConnection.style.opacity = '1';
-        
-        setTimeout(() => {
-            randomConnection.style.stroke = '#cbd5e1';
-            randomConnection.style.strokeWidth = '0.5';
-            randomConnection.style.opacity = '0.3';
-        }, 500);
-    }, 200);
+    // Set canvas size
+    canvas.width = 600;
+    canvas.height = 400;
+    
+    const gameOfLife = new GameOfLife(canvas);
+    
+    // Auto-start after a brief delay
+    setTimeout(() => {
+        gameOfLife.play();
+    }, 2000);
 }
 
 // Typewriter effect for dynamic text

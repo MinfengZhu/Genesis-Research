@@ -156,6 +156,9 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    min-height: 3.85rem;
+    display: flex;
+    align-items: center;
 }
 
 .hero-description {
@@ -194,200 +197,68 @@ body {
     height: 100%;
     max-width: 600px;
     max-height: 400px;
+    overflow: visible;
 }
 
-/* Complex Geometric Shape Animations */
-.sierpinski-group {
-    animation: fractal-rotate 12s linear infinite;
+/* Game of Life Styling */
+.life-game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
 }
 
-.fibonacci-group {
-    animation: golden-spiral 15s ease-in-out infinite;
+
+#life-canvas {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: crosshair;
+    transition: border-color 0.3s ease;
+    background: var(--bg-secondary);
 }
 
-.icosahedron-group {
-    animation: platonic-transform 8s ease-in-out infinite;
+#life-canvas:hover {
+    border-color: var(--primary-color);
 }
 
-.mandelbrot-group {
-    animation: chaotic-pulse 6s ease-in-out infinite;
-}
-
-.koch-group {
-    animation: snowflake-grow 10s ease-in-out infinite;
-}
-
-.lorenz-group {
-    animation: attractor-flow 7s ease-in-out infinite;
-}
-
-.vertex {
-    animation: vertex-glow 2s ease-in-out infinite alternate;
-}
-
-.connection-curve {
-    animation: sacred-flow 8s ease-in-out infinite;
-    stroke-dasharray: 5, 10;
-}
-
-/* Complex Mathematical Animations */
-@keyframes fractal-rotate {
-    0% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(90deg) scale(1.1); }
-    50% { transform: rotate(180deg) scale(1); }
-    75% { transform: rotate(270deg) scale(0.9); }
-    100% { transform: rotate(360deg) scale(1); }
-}
-
-@keyframes golden-spiral {
-    0%, 100% { 
-        transform: scale(1) rotate(0deg);
-        opacity: 0.8;
-    }
-    33% { 
-        transform: scale(1.2) rotate(120deg);
-        opacity: 1;
-    }
-    66% { 
-        transform: scale(0.8) rotate(240deg);
-        opacity: 0.9;
-    }
-}
-
-@keyframes platonic-transform {
-    0%, 100% {
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-    25% {
-        transform: rotateX(90deg) rotateY(90deg);
+/* Game of Life Animations */
+@keyframes cell-birth {
+    0% {
+        transform: scale(0);
+        opacity: 0;
     }
     50% {
-        transform: rotateX(180deg) rotateY(180deg);
+        transform: scale(1.2);
     }
-    75% {
-        transform: rotateX(270deg) rotateY(270deg);
-    }
-}
-
-@keyframes chaotic-pulse {
-    0%, 100% {
+    100% {
         transform: scale(1);
-        filter: hue-rotate(0deg);
-    }
-    20% {
-        transform: scale(1.1);
-        filter: hue-rotate(72deg);
-    }
-    40% {
-        transform: scale(0.9);
-        filter: hue-rotate(144deg);
-    }
-    60% {
-        transform: scale(1.15);
-        filter: hue-rotate(216deg);
-    }
-    80% {
-        transform: scale(0.85);
-        filter: hue-rotate(288deg);
-    }
-}
-
-@keyframes snowflake-grow {
-    0%, 100% {
-        transform: scale(1) rotate(0deg);
-        stroke-dasharray: 0, 20;
-    }
-    50% {
-        transform: scale(1.3) rotate(180deg);
-        stroke-dasharray: 10, 10;
-    }
-}
-
-@keyframes attractor-flow {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-        stroke-dasharray: 3, 6;
-    }
-    25% {
-        transform: rotate(90deg) scale(1.1);
-        stroke-dasharray: 6, 3;
-    }
-    50% {
-        transform: rotate(180deg) scale(0.9);
-        stroke-dasharray: 9, 3;
-    }
-    75% {
-        transform: rotate(270deg) scale(1.05);
-        stroke-dasharray: 3, 9;
-    }
-}
-
-@keyframes vertex-glow {
-    0% { 
-        opacity: 0.6;
-        r: 2;
-    }
-    100% { 
         opacity: 1;
-        r: 4;
     }
 }
 
-@keyframes sacred-flow {
-    0%, 100% {
-        opacity: 0.2;
-        stroke-dashoffset: 0;
+@keyframes cell-death {
+    0% {
+        transform: scale(1);
+        opacity: 1;
     }
-    50% {
-        opacity: 0.6;
-        stroke-dashoffset: 15;
+    100% {
+        transform: scale(0);
+        opacity: 0;
     }
 }
 
-/* Complex Geometric Shape Styling */
-.geometric-shape {
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+
+/* Game of Life Interactive Features */
+.life-game-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
-.shape {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: all 0.3s ease;
-}
-
-/* Sierpinski Triangle */
-.sierpinski-outer, .sierpinski-inner1, .sierpinski-inner2, .sierpinski-inner3, .sierpinski-inner4 {
-    stroke: var(--math-blue);
-}
-
-/* Fibonacci Spiral */
-.fibonacci-spiral, .fib-rect1, .fib-rect2, .fib-rect3 {
-    stroke: var(--ai-green);
-}
-
-/* Platonic Solids */
-.ico-top, .ico-left, .ico-right, .ico-center, .ico-bottom-left, .ico-bottom-right {
-    stroke: var(--math-purple);
-}
-
-/* Mandelbrot Set */
-.mandel-main, .mandel-bulb1, .mandel-bulb2, .mandel-bulb3, .mandel-bulb4, .mandel-tendril1, .mandel-tendril2 {
-    stroke: var(--accent-color);
-}
-
-/* Koch Snowflake */
-.koch-outer, .koch-detail1, .koch-detail2 {
-    stroke: #ec4899;
-}
-
-/* Lorenz Attractor */
-.lorenz-path {
-    stroke: #6366f1;
-}
-
-.lorenz-point1, .lorenz-point2 {
-    fill: #6366f1;
-}
 
 /* Buttons */
 .btn {
@@ -779,6 +650,7 @@ section {
     
     .hero-title {
         font-size: 2.5rem;
+        min-height: 2.75rem;
     }
     
     .mathematical-animation {
@@ -815,6 +687,7 @@ section {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+        min-height: 2.2rem;
     }
     
     .section-title {
