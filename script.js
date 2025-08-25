@@ -623,3 +623,58 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+    // Paradigms tab functionality
+    const paradigmData = {
+        symbolic: {
+            title: 'Formal Methods and Verifiable Proof',
+            icon: '♮',
+            content: 'This approach treats mathematical reasoning as a process that can be made completely explicit and mechanically verifiable. Using formal languages and proof assistants like Lean, it guarantees logical correctness. Its strength is its absolute rigor and transparency, but it can be brittle and struggle with the intuitive, creative aspects of discovery.'
+        },
+        informal: {
+            title: 'Large Language Models and Informal Reasoning',
+            icon: '≋',
+            content: 'This data-first paradigm leverages Large Language Models (LLMs) to learn the patterns of mathematical reasoning from a vast corpus of human-generated text. These models excel at generating human-like explanations and solution paths, but they are probabilistic and can "hallucinate," making their output unreliable without verification.'
+        },
+        synthesis: {
+            title: 'The Neuro-Symbolic Synthesis',
+            icon: '⨁',
+            content: 'The most promising frontier, this hybrid approach combines the strengths of the other two paradigms. An LLM provides intuitive, creative suggestions for proof strategies, while a formal, symbolic engine verifies each step for logical correctness. This creates a powerful, self-correcting loop that mimics the full spectrum of mathematical cognition, from creative ideation to rigorous proof.'
+        }
+    };
+
+    const paradigmTabs = document.querySelectorAll('.paradigm-tab');
+    const paradigmContent = document.getElementById('paradigm-content');
+
+    function updateParadigmContent(paradigmKey) {
+        const data = paradigmData[paradigmKey];
+        if (paradigmContent) {
+            paradigmContent.style.opacity = 0;
+            
+            setTimeout(() => {
+                paradigmContent.innerHTML = `
+                    <h3><span style="font-size: 2rem; margin-right: 0.5rem;">${data.icon}</span>${data.title}</h3>
+                    <p>${data.content}</p>
+                `;
+                paradigmContent.style.opacity = 1;
+            }, 150);
+        }
+
+        paradigmTabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.paradigm === paradigmKey) {
+                tab.classList.add('active');
+            }
+        });
+    }
+
+    if (paradigmTabs.length > 0) {
+        paradigmTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                updateParadigmContent(tab.dataset.paradigm);
+            });
+        });
+
+        // Initialize with first paradigm
+        updateParadigmContent('symbolic');
+    }
