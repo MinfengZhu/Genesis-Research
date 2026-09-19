@@ -193,7 +193,7 @@ body{margin:0;background:#f3eee2}
 .card-art{width:96px;height:96px;margin-bottom:20px;overflow:visible}
 .card-art *{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card-art .acc{stroke:var(--accent)}
-.card-art .dot{fill:var(--accent);stroke:none}
+.card-art .pt{fill:var(--accent);stroke:none}
 .card:hover .card-art .g{stroke-dasharray:1;animation:draw 1.5s cubic-bezier(.3,.6,.2,1) both}
 .card:hover .card-art .g2{animation-delay:.25s}
 .card:hover .card-art .g3{animation-delay:.5s}
