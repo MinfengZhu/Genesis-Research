@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Genesis Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html#home" class="logo">Genesis Research</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#mission" class="nav-link">Mission</a></li>
+                <li><a href="index.html#research" class="nav-link">Research</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-page-hero">
+            <span class="eyebrow">Research &amp; Projects</span>
+            <h1>Research Progress</h1>
+            <p>
+                Two projects, one research program. One project solves Olympiad geometry. The other
+                learns new geometry rules from its own proofs.
+            </p>
+        </section>
+
+        <div class="projects-list">
+
+            <!-- GenesisGeo -->
+            <section class="project-showcase" id="genesisgeo">
+                <div class="project-timeline-marker">2025 &mdash; Ongoing</div>
+                <div class="project-showcase-header">
+                    <div class="project-badge">Multimodal Prover</div>
+                    <h3 class="project-title">GenesisGeo</h3>
+                    <p class="project-subtitle">A Multimodal Synthetic Dataset &amp; Prover for Olympiad Geometry Solving</p>
+                </div>
+
+                <p class="project-description">
+                    Most geometry provers only reason with symbols. They ignore visual cues like
+                    symmetry and shape, the cues humans use to find the right construction. GenesisGeo
+                    uses both. <strong>GenesisGeo-1M</strong> is a dataset of 1 million problems. Each
+                    one pairs a diagram with a proof a computer can check.
+                    <strong>GenesisGeo-2B</strong> is a vision-language model trained on this dataset.
+                    It reads diagrams and text together. The model proposes a construction. A fast
+                    symbolic engine checks it. This loop repeats until the proof is done.
+                </p>
+
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-number">29/30</span>
+                        <span class="stat-label">IMO&#8209;30</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">63/95</span>
+                        <span class="stat-label">IMO&#8209;95</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">278/409</span>
+                        <span class="stat-label">HAGeo&#8209;409</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">1M</span>
+                        <span class="stat-label">Synthetic Problems</span>
+                    </div>
+                </div>
+
+                <div class="project-highlights">
+                    <div class="project-highlight">
+                        <span class="highlight-icon">🧩</span>
+                        <div>
+                            <h4>Multimodal Data Synthesis</h4>
+                            <p>Diagrams, formal statements, and proof steps, all generated automatically and aligned pixel by pixel.</p>
+                        </div>
+                    </div>
+                    <div class="project-highlight">
+                        <span class="highlight-icon">⚙️</span>
+                        <div>
+                            <h4>Multi-Task Training</h4>
+                            <p>The model learns from text and from diagrams at the same time. This builds symbolic rigor and visual understanding together.</p>
+                        </div>
+                    </div>
+                    <div class="project-highlight">
+                        <span class="highlight-icon">🥇</span>
+                        <div>
+                            <h4>Gold-Medal Performance</h4>
+                            <p>GenesisGeo-2B scores like a top Olympiad competitor. It even found a new, shorter solution to IMO 2008 Problem 6.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-statement">
+                    <span class="progress-label">Current Progress</span>
+                    <p>GenesisGeo-2B has reached gold-medal-level performance. It solves 29 of 30
+                    problems on IMO-30, and 278 of 409 on HAGeo-409. The dataset pipeline and training
+                    method are stable and easy to repeat. We are now working on harder problems, the
+                    ones that need ten or more extra construction steps. These are still out of reach.</p>
+                </div>
+            </section>
+
+            <!-- GeoDiscovery -->
+            <section class="project-showcase" id="geodiscovery">
+                <div class="project-timeline-marker">2025 &mdash; Ongoing</div>
+                <div class="project-showcase-header">
+                    <div class="project-badge">Self-Improving Solver</div>
+                    <h3 class="project-title">GeoDiscovery</h3>
+                    <p class="project-subtitle">Discovering Geometric Knowledge from Machine-Generated Proofs</p>
+                </div>
+
+                <p class="project-description">
+                    Even the best geometry solvers use a fixed set of rules. Once a problem is solved,
+                    the reasoning inside the proof gets thrown away. GeoDiscovery keeps it. The system
+                    has four steps. First, <strong>proof generation</strong> solves new problems and
+                    keeps the verified proofs. Second, <strong>rule extraction</strong> pulls new
+                    reasoning patterns out of these proofs. Third,
+                    <strong>counterexample-guided refinement</strong> checks each new rule against edge
+                    cases and adds guard conditions where needed. Fourth,
+                    <strong>rule reduction</strong> merges and prunes rules to keep the set small. The
+                    new rules go back into the solver. The next round starts stronger.
+                </p>
+
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="stat-number">157&rarr;203</span>
+                        <span class="stat-label">JGEX Solved</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">9&rarr;12</span>
+                        <span class="stat-label">IMO&#8209;30 Solved</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">54&rarr;72</span>
+                        <span class="stat-label">HAGeo Solved</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="stat-number">784/1000</span>
+                        <span class="stat-label">Previously Unsolvable</span>
+                    </div>
+                </div>
+
+                <div class="project-highlights">
+                    <div class="project-highlight">
+                        <span class="highlight-icon">🔍</span>
+                        <div>
+                            <h4>Proof Graph Mining</h4>
+                            <p>Cleans up each proof trace. It removes steps the solver already knows, and keeps only the new reasoning.</p>
+                        </div>
+                    </div>
+                    <div class="project-highlight">
+                        <span class="highlight-icon">🛡️</span>
+                        <div>
+                            <h4>Counterexample-Guided Refinement</h4>
+                            <p>Searches for edge cases that break a new rule. Then it adds the missing condition that fixes the rule.</p>
+                        </div>
+                    </div>
+                    <div class="project-highlight">
+                        <span class="highlight-icon">♻️</span>
+                        <div>
+                            <h4>Recursive Self-Improvement</h4>
+                            <p>Three rounds beat one big round, using the same budget. New rules unlock new proofs. New proofs unlock more rules.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-statement">
+                    <span class="progress-label">Current Progress</span>
+                    <p>We have run three rounds of rule discovery, using a shared budget of 750,000
+                    proofs. The last round alone added 291 new rules. Solve rates went up across the
+                    board: 157 to 203 on JGEX, 9 to 12 on IMO-30, and 54 to 72 on HAGeo. On some
+                    benchmarks, our rules now match hand-written human rules. Current work groups these
+                    rules into higher-level ideas, and improves how well they work on human-written
+                    problems.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Genesis Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

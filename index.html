@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI for Mathematics Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Genesis Research — AI That Reasons About Mathematics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <h1 class="logo">Genesis Research</h1>
+                <a href="#home" class="logo">Genesis Research</a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#history" class="nav-link">History</a></li>
-                <li><a href="#paradigms" class="nav-link">Paradigms</a></li>
-                <li><a href="#future" class="nav-link">Future</a></li>
+                <li><a href="#mission" class="nav-link">Mission</a></li>
                 <li><a href="#research" class="nav-link">Research</a></li>
             </ul>
         </nav>
@@ -28,20 +26,22 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h2 class="hero-title">Advancing Mathematics Through Artificial Intelligence</h2>
+                    <span class="eyebrow">AI for Mathematics</span>
+                    <h1 class="hero-title">We build AI that reasons about math.</h1>
                     <p class="hero-description">
-                        Pioneering research at the intersection of AI and mathematical reasoning, 
-                        developing intelligent systems that can discover, prove, and explore mathematical concepts.
+                        Genesis Research combines language models with formal proof checking.
+                        Our first goal is Olympiad-level geometry.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#research" class="btn btn-primary">Explore Research</a>
-                        <a href="#research" class="btn btn-secondary">Learn More</a>
+                        <a href="#research" class="btn btn-primary">See Our Research</a>
+                        <a href="#mission" class="btn btn-secondary">Our Mission</a>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="mathematical-animation">
                         <div class="geometry-container">
                             <div id="life-game-container" class="life-game-wrapper">
+                                <span class="life-game-caption">Conway's Game of Life. A simple rule. Endless patterns.</span>
                                 <canvas id="life-canvas" width="600" height="400"></canvas>
                             </div>
                         </div>
@@ -50,147 +50,89 @@
             </div>
         </section>
 
-        <!-- History Section -->
-        <section id="history" class="hero">
+        <!-- Mission Section -->
+        <section id="mission" class="hero mission-section">
             <div class="container">
-                <div class="history-content">
-                    <div class="history-text">
-                        <h2 class="history-title">A New Telescope for Thought</h2>
-                        <p class="history-intro">
-                            Just as the telescope revolutionized astronomy, Artificial Intelligence is transforming mathematics. 
-                            This is an exploration of how AI is becoming a new instrument for discovery—not just for calculation, 
-                            but for reasoning, conjecturing, and pioneering new scientific theories.
-                        </p>
-                        <div class="revolution-cards">
-                            <div class="revolution-card">
-                                <h3>The Galilean Revolution</h3>
-                                <p>In the 17th century, the telescope turned astronomy from philosophy into an empirical science. 
-                                By revealing Jupiter's moons and the Moon's craters, it generated undeniable evidence that shattered 
-                                a millennium of dogma and reshaped our understanding of the cosmos.</p>
-                            </div>
-                            <div class="revolution-card">
-                                <h3>The AI Revolution</h3>
-                                <p>Today, AI acts as a cognitive instrument for mathematics. It synthesizes vast knowledge, 
-                                identifies novel patterns, and verifies complex proofs with logical certainty, opening up new 
-                                frontiers of discovery that were previously beyond human reach.</p>
-                            </div>
-                        </div>
+                <span class="eyebrow">Our Mission</span>
+                <h2 class="section-title">Mathematics needs a new kind of reasoning</h2>
+                <p class="mission-statement">
+                    Machines can calculate fast. They still struggle with judgment. Judgment means
+                    looking at a diagram, sensing which step might unlock a proof, and knowing when an
+                    argument holds up. We build systems with this kind of judgment. A language model
+                    suggests ideas. A symbolic engine checks each one. Every idea gets checked before
+                    we trust it.
+                </p>
+
+                <div class="mission-principles">
+                    <div class="mission-principle">
+                        <span class="principle-index">01</span>
+                        <h3>Verifiable by Design</h3>
+                        <p>A symbolic engine checks every proof we produce. We only publish results we
+                        can verify.</p>
+                    </div>
+                    <div class="mission-principle">
+                        <span class="principle-index">02</span>
+                        <h3>Grounded in Intuition</h3>
+                        <p>Diagrams carry real information. Our models learn to read shapes and
+                        symmetry, the way mathematicians do.</p>
+                    </div>
+                    <div class="mission-principle">
+                        <span class="principle-index">03</span>
+                        <h3>Compounding Knowledge</h3>
+                        <p>Every solved proof teaches us something new. Our systems learn from their
+                        own work and improve over time.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Paradigms Section -->
-        <section id="paradigms" class="hero">
+        <!-- Research & Products Section -->
+        <section id="research" class="hero research-section">
             <div class="container">
-                <div class="paradigms-content">
-                    <h2 class="section-title">Three Paradigms of Machine Reasoning</h2>
-                    <p class="paradigms-intro">
-                        The landscape of AI for math is defined by three core approaches. This research focuses on the 
-                        synthesis of these paradigms, creating a system that combines intuitive pattern-matching with 
-                        rigorous, verifiable logic. Click each tab to learn more.
-                    </p>
-                    
-                    <div class="paradigm-tabs">
-                        <button class="paradigm-tab active" data-paradigm="symbolic">
-                            <span class="paradigm-icon">♮</span>
-                            <div class="paradigm-label">
-                                <h3>Formal & Symbolic</h3>
-                                <p>Verifiable Proof</p>
-                            </div>
-                        </button>
-                        <button class="paradigm-tab" data-paradigm="informal">
-                            <span class="paradigm-icon">≋</span>
-                            <div class="paradigm-label">
-                                <h3>Informal & Data-Driven</h3>
-                                <p>Pattern Learning</p>
-                            </div>
-                        </button>
-                        <button class="paradigm-tab" data-paradigm="synthesis">
-                            <span class="paradigm-icon">⨁</span>
-                            <div class="paradigm-label">
-                                <h3>Neuro-Symbolic Synthesis</h3>
-                                <p>Best of Both Worlds</p>
-                            </div>
-                        </button>
-                    </div>
-                    
-                    <div class="paradigm-content" id="paradigm-content">
-                        <!-- Content will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
+                <span class="eyebrow">Research &amp; Products</span>
+                <h2 class="section-title">What we're building</h2>
+                <p class="section-intro">
+                    Two systems put our approach to work. One solves geometry problems. The other
+                    learns new rules from its own proofs.
+                </p>
 
-        <!-- Future Section -->
-        <section id="future" class="hero">
-            <div class="container">
-                <div class="future-content">
-                    <h2 class="section-title">The Future: From Co-Pilot to Creative Partner</h2>
-                    <p class="future-intro">
-                        Solving IMO problems is just the beginning. The research roadmap envisions AI evolving through 
-                        three stages, ultimately becoming a true collaborator in pioneering new scientific theories.
-                    </p>
-                    
-                    <div class="future-roadmap">
-                        <div class="roadmap-line"></div>
-                        <div class="roadmap-stages">
-                            <div class="roadmap-stage">
-                                <div class="stage-marker">1</div>
-                                <div class="stage-content">
-                                    <h3>Stage 1: Co-Pilot</h3>
-                                    <p>AI acts as an assistant, handling tasks like code generation (MATLAB Copilot) and 
-                                    personalized tutoring (Khanmigo), augmenting human workflows.</p>
-                                </div>
-                            </div>
-                            <div class="roadmap-stage">
-                                <div class="stage-marker">2</div>
-                                <div class="stage-content">
-                                    <h3>Stage 2: Synergistic Partner</h3>
-                                    <p>In environments like Lean, humans provide high-level strategy while AI manages 
-                                    tactical proof search and logical verification, enabling distributed cognition.</p>
-                                </div>
-                            </div>
-                            <div class="roadmap-stage">
-                                <div class="stage-marker">3</div>
-                                <div class="stage-content">
-                                    <h3>Stage 3: Pioneer</h3>
-                                    <p>AI transcends problem-solving to generate novel conjectures and discover new theorems, 
-                                    as seen in knot theory and graph theory breakthroughs.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Section -->
-        <section id="research" class="hero">
-            <div class="container">
-                <h2 class="section-title">Research Areas</h2>
                 <div class="research-grid">
-                    <div class="research-card">
+                    <a href="projects.html#genesisgeo" class="research-card research-card-featured">
                         <div class="card-icon">📐</div>
-                        <h3>Geometry Reasoning</h3>
-                        <p>Developing AI systems that can understand and reason about geometric concepts, spatial relationships, and visual mathematical structures.</p>
-                    </div>
+                        <span class="research-card-tag">Multimodal Prover</span>
+                        <h3>GenesisGeo</h3>
+                        <p>A dataset of 1 million geometry problems, paired with a vision-language
+                        model. It reads diagrams and symbols together, and reaches gold-medal-level
+                        scores on Olympiad geometry.</p>
+                        <div class="research-card-stats">
+                            <span><strong>29/30</strong> IMO&#8209;30</span>
+                            <span><strong>278/409</strong> HAGeo&#8209;409</span>
+                        </div>
+                        <span class="research-card-link">View Progress &rarr;</span>
+                    </a>
+
                     <div class="research-card">
                         <div class="card-icon">🧮</div>
                         <h3>Neural Theorem Proving</h3>
-                        <p>Developing neural networks that can automatically discover and prove mathematical theorems using deep learning architectures.</p>
+                        <p>Our next research direction. We want neural networks that discover and
+                        prove theorems on their own, moving beyond geometry into new fields.</p>
                     </div>
-                    <div class="research-card">
+
+                    <a href="projects.html#geodiscovery" class="research-card research-card-featured">
                         <div class="card-icon">🔭</div>
-                        <h3>Mathematical Discovery</h3>
-                        <p>Using machine learning to identify patterns in mathematical data and generate new conjectures and insights.</p>
-                    </div>
+                        <span class="research-card-tag">Self-Improving Solver</span>
+                        <h3>GeoDiscovery</h3>
+                        <p>A framework that learns from its own proofs. It finds reusable rules inside
+                        them, and grows stronger with every round.</p>
+                        <div class="research-card-stats">
+                            <span><strong>157&rarr;203</strong> JGEX</span>
+                            <span><strong>54&rarr;72</strong> HAGeo</span>
+                        </div>
+                        <span class="research-card-link">View Progress &rarr;</span>
+                    </a>
                 </div>
             </div>
         </section>
-
-
-
     </main>
 
     <footer class="footer">
