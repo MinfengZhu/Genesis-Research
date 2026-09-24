@@ -12,7 +12,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Caveat:wght@500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap&text=%E3%80%82%E4%B9%9F%E4%BB%A5%E5%90%BE%E5%B7%B2%E6%97%A0%E6%9C%89%E6%AE%86%E6%B6%AF%E7%94%9F%E7%9F%A5%E8%80%8C%E9%9A%8F%EF%BC%81%EF%BC%8C" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,10 +31,7 @@
       </filter>
     </defs>
   </svg>
-  <svg class="grain" aria-hidden="true" focusable="false">
-    <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="matrix" values="0 0 0 0 .11  0 0 0 0 .15  0 0 0 0 .25  0 0 0 .55 -.2"></feColorMatrix></filter>
-    <rect width="100%" height="100%" filter="url(#grainf)"></rect>
-  </svg>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="nav-in">
