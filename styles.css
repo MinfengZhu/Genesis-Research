@@ -83,7 +83,7 @@ body{margin:0;background:#f3eee2}
 .card:hover .arrow{transform:translateX(5px)}
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:max(780px,calc(100vh - 68px));display:flex;align-items:center;overflow:hidden;background:radial-gradient(60% 75% at 74% 48%,rgba(150,175,225,.22),transparent 72%)}
+.hero{--sky-h:100%;position:relative;min-height:max(780px,calc(100vh - 68px));display:flex;align-items:center;overflow:hidden;transition:min-height .6s cubic-bezier(.2,.7,.2,1);background:radial-gradient(60% 75% at 74% 48%,rgba(150,175,225,.22),transparent 72%)}
 .sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .far{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;opacity:.28}
 .gd1,.gd2,.gd3,.gx{fill:none;stroke:var(--ink);stroke-linecap:round;vector-effect:non-scaling-stroke}
@@ -97,7 +97,8 @@ body{margin:0;background:#f3eee2}
 .probe-halo{fill:none;stroke:var(--accent);stroke-opacity:.45}
 .probe-dot{fill:var(--accent)}
 .hero-row{width:100%;position:relative;z-index:2}
-.hero-copy{max-width:540px;padding:20px 0 40px}
+.hero .sky{inset:auto 0 0 0;height:var(--sky-h);transition:height .6s cubic-bezier(.2,.7,.2,1)}
+.hero-copy{max-width:540px;padding:20px 0 40px;transition:padding .6s cubic-bezier(.2,.7,.2,1)}
 .hero h1{font-size:clamp(44px,5vw,70px);line-height:1.06;margin:22px 0 26px}
 .hero-sub{max-width:470px;margin:0;font-size:19px;color:var(--body)}
 
@@ -256,10 +257,14 @@ body{margin:0;background:#f3eee2}
 @media (max-width:1000px){
   .quote-en{white-space:normal;max-width:560px}
 }
+@media (max-width:1280px){
+  /* Below 1280px the galaxy would cover the text, so it sits in a band under the
+     headline, overlapping it slightly. The band scales with the width, so it
+     moves smoothly on resize. */
+  .hero{--sky-h:clamp(340px,calc(24vw + 250px),520px);min-height:0}
+  .hero-copy{padding:60px 0 calc(var(--sky-h) * .68)}
+}
 @media (max-width:1100px){
-  .hero{align-items:flex-start}
-  .hero-row{padding-top:40px}
-  .hero-copy{padding-bottom:300px}
   .sec-grid{grid-template-columns:1fr;gap:24px}
   .tl2{height:auto;margin:44px 0 0}
   .tl2::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;border-left:2.5px dashed rgba(29,39,64,.35);filter:url(#rough)}
