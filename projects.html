@@ -12,7 +12,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Caveat:wght@500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,10 +30,7 @@
       </filter>
     </defs>
   </svg>
-  <svg class="grain" aria-hidden="true" focusable="false">
-    <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="matrix" values="0 0 0 0 .11  0 0 0 0 .15  0 0 0 0 .25  0 0 0 .55 -.2"></feColorMatrix></filter>
-    <rect width="100%" height="100%" filter="url(#grainf)"></rect>
-  </svg>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="nav-in">
